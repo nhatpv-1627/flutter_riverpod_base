@@ -1,0 +1,4 @@
+#include "Generated.xcconfig"
+
+APP_NAME = [DEV] Flutter Base
+PRODUCT_BUNDLE_IDENTIFIER = com.sun.asterisk.flutter.base.dev

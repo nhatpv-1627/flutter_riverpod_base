@@ -1,0 +1,134 @@
+name: flutter_base
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.19.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_fonts: ^6.2.1
+
+  # For Design Pattern
+  hooks_riverpod: ^2.1.3
+  flutter_hooks: ^0.20.5
+
+  # screen responsive
+  responsive_framework: ^1.4.0
+
+  # Navigation
+  go_router: ^14.2.0
+
+  easy_localization: ^3.0.1
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.8.0
+  uuid: ^4.4.0
+
+  # For getting device info
+  package_info_plus:
+    ^8.0.0
+
+    # For Networking
+  dio: ^5.0.0
+  retrofit: ">=4.0.0 <5.0.0"
+  logger: any
+
+  # data class
+  equatable: ^2.0.5
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  lottie: ^3.1.2
+  flare_flutter: ^3.0.2
+  rive: ^0.13.9
+  video_player: ^2.5.2
+  flutter_gen: ^5.6.0
+
+dev_dependencies:
+  flutter_gen_runner:
+  flutter_dotenv: ^5.0.2
+  build_runner: ^2.3.3
+  json_serializable: ^6.6.1
+
+  # For Networking
+  retrofit_generator: ^8.1.0
+
+  # Json serializable & data class model
+  enum_to_string: ^2.0.1
+  freezed: ^2.3.2
+
+  # Platform information
+  package_info: ^2.0.2
+
+  # Support for design
+  flutter_svg: ^2.0.0+1
+  flutter_lints: ^4.0.0
+
+flutter_test:
+  sdk: flutter
+
+flutter_gen:
+  output: lib/generated # Optional (default: lib/gen/)
+  null_safety: true
+
+  integrations:
+    flutter_svg: true
+    rive: true
+    flare_flutter: true
+    lottie: true
+
+  assets:
+    enabled: true
+
+    outputs:
+      # Available values:
+      # style: camel-case # Assets.imagesChip
+      # style: snake-case # Assets.images_chip
+      # style: dot-delimiter # Assets.images.chip (default style)
+      style: dot-delimiter
+      # class_name: ResAssets # Optional (default: Assets)
+      exclude:
+        - assets/translations/
+
+  fonts:
+    enabled: true
+
+  colors:
+    enabled: true
+    inputs:
+      - assets/color/colors.xml
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    # env
+    - assets/.env.develop
+    - assets/.env.production
+    - assets/.env.staging
+    - assets/translations/
+
+    # source
+    - assets/images/
+    - assets/videos/
+    - assets/json/
+    - assets/rive/
+    - assets/lottie/
+    - assets/flare/
+
+  fonts:
+    - family: Muli
+      fonts:
+        - asset: assets/fonts/Muli-Bold.ttf
+          weight: 900
+        - asset: assets/fonts/Muli-SemiBold.ttf
+          weight: 700
+        - asset: assets/fonts/Muli-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Muli-Italic.ttf
+          style: italic

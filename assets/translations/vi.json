@@ -1,0 +1,27 @@
+{
+  "app_title": "Xin chào ae Mobile",
+  "select_language": "Chọn ngôn ngữ",
+  "you_have_push_button_many_times": "Bạn đã ấn nút này nhiều lần: ",
+  "arbic": "Ả rập",
+  "english": "Tiếng Anh",
+  "vietnamese":"Tiếng Việt",
+  "increase":"Tăng lên",
+  "clicked": {
+    "zero": "{} lần!",
+    "one": "{} lần!",
+    "two": "{} lần!",
+    "few": "{} lần!",
+    "many": "{} lần!",
+    "other": "{} lần!"
+  },
+  "someone_clicked": {
+    "zero": "{name} đã bấm {number} lần!",
+    "one": "{name} đã bấm {number} lần!",
+    "two": "{name} đã bấm {number} lần!",
+    "few": "{name} đã bấm {number} lần!",
+    "many": "{name} đã bấm {number} lần!",
+    "other": "{name} đã bấm {number} lần!"
+  },
+  "wife_children_floors_wheels": "{} vợ, {} con, {} lầu, {} bánh",
+  "wife_children_floors_wheels_keys": "{wife} vợ, {child} con, {floor} lầu, {wheel} bánh"
+}

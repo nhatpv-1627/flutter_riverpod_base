@@ -1,0 +1,27 @@
+{
+  "app_title": "Hello Mobile team",
+  "select_language": "Select language",
+  "you_have_push_button_many_times": "You have pushed the button this many times",
+  "arbic": "Arbic",
+  "english": "English",
+  "vietnamese":"Vietnamese",
+  "increase":"Increase",
+  "clicked": {
+    "zero": "{} times!",
+    "one": "{} time!",
+    "two": "{} times!",
+    "few": "{} times!",
+    "many": "{} times!",
+    "other": "{} times!"
+  },
+  "someone_clicked": {
+    "zero": "{name} clicked {number} times!",
+    "one": "{name} clicked {number} time!",
+    "two": "{name} clicked {number} times!",
+    "few": "{name} clicked {number} times!",
+    "many": "{name} clicked {number} times!",
+    "other": "{name} clicked {number} times!"
+  },
+  "wife_children_floors_wheels": "{} wife, {} children, {} floors, {} wheels",
+  "wife_children_floors_wheels_keys": "{wife} wife, {child} children, {floor} floors, {wheel} wheels"
+}
