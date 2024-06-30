@@ -10,7 +10,7 @@ class AuthInterceptor extends QueuedInterceptor {
   AuthInterceptor({required this.currentDio});
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) async {
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
     if (err.response != null &&
         err.response?.statusCode == HttpStatus.unauthorized) {
       // TODO Please refactor when token api ready
@@ -63,7 +63,7 @@ class AuthInterceptor extends QueuedInterceptor {
         );
 
         handler.resolve(response);
-      } on DioError catch (e) {
+      } on DioException catch (e) {
         handler.next(e);
       }
     }

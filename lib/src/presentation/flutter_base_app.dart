@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base/src/presentation/ui/top_rate_movies/top_rated_movies_page.dart';
+import 'package:flutter_base/src/presentation/navigation/router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class FlutterBaseApp extends StatelessWidget {
@@ -8,11 +8,11 @@ class FlutterBaseApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      home: const TopRatedMoviePage(),
+      routerConfig: router,
       builder: (context, child) {
         return ResponsiveBreakpoints.builder(
           child: child!,

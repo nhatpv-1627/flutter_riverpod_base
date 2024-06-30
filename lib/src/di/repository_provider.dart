@@ -10,7 +10,7 @@ final movieRemoteDataSource = Provider<MovieRemoteDataSource>(
   (ref) => MovieRemoteDataSource(
     authApi: ref.watch(authApiProvider),
     apiKey: Environment.apiKey,
-    unAuthApi: ref.watch(unauthApiProvider),
+    unAuthApi: ref.watch(unAuthApiProvider),
   ),
 );
 
