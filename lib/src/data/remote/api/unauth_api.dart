@@ -8,7 +8,7 @@ part 'unauth_api.g.dart';
 
 @RestApi()
 abstract class UnAuthApi {
-  factory UnAuthApi(Dio dio) = _UnauthApi;
+  factory UnAuthApi(Dio dio) = _UnAuthApi;
 
   @POST('/refresh_token')
   Future<Token> refreshToken();
