@@ -8,7 +8,9 @@ extension AsyncValueUI on AsyncValue<void> {
   void showSnackBarOnError(BuildContext context) => whenOrNull(
         error: (error, _) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text((error as AppError).message ?? '')),
+            SnackBar(
+              content: Text((error as AppError).message ?? ''),
+            ),
           );
         },
       );

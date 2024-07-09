@@ -1,16 +1,18 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_base/src/data/local/storage/secure_storage.dart';
 
 class AuthInterceptor extends QueuedInterceptor {
   final Dio currentDio;
+  final SecureStorage secureStorage;
   final String auth = 'Authorization';
   final String bearer = 'Bearer';
 
-  AuthInterceptor({required this.currentDio});
+  AuthInterceptor({required this.currentDio, required this.secureStorage});
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) async {
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
     if (err.response != null &&
         err.response?.statusCode == HttpStatus.unauthorized) {
       // TODO Please refactor when token api ready
@@ -63,7 +65,7 @@ class AuthInterceptor extends QueuedInterceptor {
         );
 
         handler.resolve(response);
-      } on DioError catch (e) {
+      } on DioException catch (e) {
         handler.next(e);
       }
     }

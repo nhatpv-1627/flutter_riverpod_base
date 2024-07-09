@@ -1,7 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_base/src/data/remote/response/error_response.dart';
 
 enum AppErrorType {
@@ -15,7 +16,7 @@ enum AppErrorType {
   unknown,
 }
 
-class AppError implements Equatable {
+class AppError {
   final String? message;
   final AppErrorType type;
 
@@ -96,8 +97,17 @@ class AppError implements Equatable {
   }
 
   @override
-  List<Object?> get props => [type, message, errorCode, errors];
+  bool operator ==(covariant AppError other) {
+    if (identical(this, other)) return true;
+
+    return other.message == message &&
+        other.type == type &&
+        other.errorCode == errorCode &&
+        listEquals(other.errors, errors);
+  }
 
   @override
-  bool? get stringify => true;
+  String toString() {
+    return 'AppError(message: $message, type: $type, errorCode: $errorCode, errors: $errors)';
+  }
 }
