@@ -1,13 +1,15 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_base/src/data/local/storage/secure_storage.dart';
 
 class AuthInterceptor extends QueuedInterceptor {
   final Dio currentDio;
+  final SecureStorage secureStorage;
   final String auth = 'Authorization';
   final String bearer = 'Bearer';
 
-  AuthInterceptor({required this.currentDio});
+  AuthInterceptor({required this.currentDio, required this.secureStorage});
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {

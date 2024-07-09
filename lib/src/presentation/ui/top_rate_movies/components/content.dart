@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base/src/di/viewmodel_provider.dart';
 import 'package:flutter_base/src/domain/models/movie_model.dart';
-import 'package:flutter_base/src/presentation/navigation/screens.dart';
-import 'package:flutter_base/src/presentation/utils/widgets/loading.dart';
+import 'package:flutter_base/src/presentation/base/process.dart';
+import 'package:flutter_base/src/presentation/navigation/screen_names.dart';
+import 'package:flutter_base/src/presentation/ui/top_rate_movies/top_rated_movies_view_model.dart';
+import 'package:flutter_base/src/shared/extensions/list_exts.dart';
+import 'package:flutter_base/src/shared/widgets/loading.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -12,16 +14,14 @@ class ContentWidget extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(topRatedMoviesViewModelProvider);
-    final movieState = viewModel.movieListState.value;
-    final hasLoading =
-        viewModel.processes.any((element) => element.value is AsyncLoading);
     return Stack(
       children: [
-        movieState?.whenOrNull(
-              data: (data) => _listMovies(data),
-            ) ??
-            const SizedBox(),
-        if (hasLoading) const Loading(),
+        viewModel.movies.isNullOrEmpty()
+            ? const Center(
+                child: Text('Empty'),
+              )
+            : _listMovies(viewModel.movies),
+        if (viewModel.status.isLoading) const Loading(),
       ],
     );
   }
@@ -43,9 +43,7 @@ class ContentWidget extends HookConsumerWidget {
 Widget _buildMovieItem(BuildContext context, MovieModel movie) {
   return InkWell(
     onTap: () {
-      // TODO navigation: https://pub.dev/documentation/go_router/latest/topics/Navigation-topic.html
-      GoRouter.of(context)
-          .go('${Screens.topRatedMovie}/${Screens.movieDetail}');
+      context.pushNamed(ScreenNames.topMovieDetail);
     },
     child: Padding(
       padding: const EdgeInsets.all(8.0),

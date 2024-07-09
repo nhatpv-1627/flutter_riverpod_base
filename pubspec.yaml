@@ -6,7 +6,7 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.19.0 <4.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -16,6 +16,7 @@ dependencies:
   # For Design Pattern
   hooks_riverpod: ^2.1.3
   flutter_hooks: ^0.20.5
+  riverpod_annotation: ^2.3.5
 
   # screen responsive
   responsive_framework: ^1.4.0
@@ -29,17 +30,16 @@ dependencies:
   uuid: ^4.4.0
 
   # For getting device info
-  package_info_plus:
-    ^8.0.0
+  package_info_plus: ^8.0.0
 
-    # For Networking
+  # For Networking
   dio: ^5.0.0
   retrofit: ">=4.0.0 <5.0.0"
   pretty_dio_logger: ^1.3.1
   logger: any
 
-  # data class
-  equatable: ^2.0.5
+  # Lightweight, secure local storage
+  flutter_secure_storage: ^9.2.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -55,13 +55,15 @@ dev_dependencies:
   flutter_dotenv: ^5.0.2
   build_runner: ^2.3.3
   json_serializable: ^6.6.1
+  riverpod_generator: ^2.4.2
+  custom_lint: ^0.6.4
+  riverpod_lint: ^2.3.12
 
   # For Networking
   retrofit_generator: ^8.1.0
 
   # Json serializable & data class model
   enum_to_string: ^2.0.1
-  freezed: ^2.3.2
 
   # Platform information
   package_info: ^2.0.2
@@ -69,6 +71,9 @@ dev_dependencies:
   # Support for design
   flutter_svg: ^2.0.0+1
   flutter_lints: ^4.0.0
+
+dependency_overrides:
+  meta: ^1.15.0
 
 flutter_test:
   sdk: flutter

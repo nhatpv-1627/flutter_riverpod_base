@@ -10,8 +10,8 @@ class GetTopRatedMoviesUseCase
   GetTopRatedMoviesUseCase(this._repository);
 
   @override
-  Future<List<MovieModel>?> buildUseCase(GetTopRaredInput input) {
-    return _repository.getTopRatedMovies(input.page);
+  Future<List<MovieModel>?> buildUseCase(GetTopRaredInput input) async {
+    return await _repository.getTopRatedMovies(input.page);
   }
 }
 

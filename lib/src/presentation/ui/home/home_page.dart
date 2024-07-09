@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/src/presentation/navigation/screen_paths.dart';
 import 'package:go_router/go_router.dart';
-
-import '/src/presentation/navigation/screens.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -17,8 +16,8 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.trending_up),
+            label: 'TopRate',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
@@ -37,13 +36,13 @@ class HomePage extends StatelessWidget {
 
   static int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).uri.path;
-    if (location.startsWith(Screens.topRatedMovie)) {
+    if (location.startsWith(ScreenPaths.topRatedMovie)) {
       return 0;
     }
-    if (location.startsWith(Screens.favoriteMovies)) {
+    if (location.startsWith(ScreenPaths.favoriteMovies)) {
       return 1;
     }
-    if (location.startsWith(Screens.myProfile)) {
+    if (location.startsWith(ScreenPaths.myProfile)) {
       return 2;
     }
     return 0;
@@ -52,13 +51,13 @@ class HomePage extends StatelessWidget {
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        GoRouter.of(context).go(Screens.topRatedMovie);
+        GoRouter.of(context).go(ScreenPaths.topRatedMovie);
         break;
       case 1:
-        GoRouter.of(context).go(Screens.favoriteMovies);
+        GoRouter.of(context).go(ScreenPaths.favoriteMovies);
         break;
       case 2:
-        GoRouter.of(context).go(Screens.myProfile);
+        GoRouter.of(context).go(ScreenPaths.myProfile);
         break;
     }
   }

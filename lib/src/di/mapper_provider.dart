@@ -1,4 +1,7 @@
 import 'package:flutter_base/src/data/mapper/movie_mapper.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final movieMapper = Provider<MovieMapper>((ref) => MovieMapper());
+part 'mapper_provider.g.dart';
+
+@Riverpod(keepAlive: true)
+MovieMapper movieMapper(MovieMapperRef ref) => MovieMapper();

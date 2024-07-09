@@ -20,15 +20,15 @@ Future main() async {
   };
 
   runApp(
-    EasyLocalization(
-      supportedLocales: supportedLocales,
-      path: 'assets/translations',
-      fallbackLocale: supportedLocales[0],
-      useOnlyLangCode: true,
-      useFallbackTranslations: true,
-      saveLocale: true,
-      child: const ProviderScope(
-        child: FlutterBaseApp(),
+    ProviderScope(
+      child: EasyLocalization(
+        supportedLocales: supportedLocales,
+        path: 'assets/translations',
+        fallbackLocale: supportedLocales[0],
+        useOnlyLangCode: true,
+        useFallbackTranslations: true,
+        saveLocale: true,
+        child: const FlutterBaseApp(),
       ),
     ),
   );
