@@ -1,7 +1,7 @@
 import 'package:flutter_base/src/data/local/storage/storage_keys.dart';
 import 'package:flutter_base/src/di/local_provider.dart';
 import 'package:flutter_base/src/presentation/navigation/screen_paths.dart';
-import 'package:flutter_base/src/shared/extensions/string_ext.dart';
+import 'package:flutter_base/src/shared/extensions/string_exts.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_state.g.dart';
@@ -12,7 +12,6 @@ class CurrentAuthState extends _$CurrentAuthState {
   AuthState build() {
     final secureStorage = ref.watch(secureStorageProvider).requireValue;
     final token = secureStorage.get(StorageKeys.accessToken.name);
-    print('xxxxxx ${token.isNullOrEmpty}');
     return token.isNullOrEmpty
         ? AuthState.unauthenticated
         : AuthState.authenticated;

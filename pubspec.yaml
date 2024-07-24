@@ -21,6 +21,9 @@ dependencies:
   # screen responsive
   responsive_framework: ^1.4.0
 
+  # Splash screen
+  flutter_native_splash: ^2.4.1
+
   # Navigation
   go_router: ^14.2.0
 
@@ -74,6 +77,13 @@ dev_dependencies:
 
 dependency_overrides:
   meta: ^1.15.0
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/images/ic_splash.png
+  android_12:
+    icon_background_color: "#FFFFFF"
+    image: assets/images/ic_splash_android_12.png
 
 flutter_test:
   sdk: flutter
