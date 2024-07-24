@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/presentation/base/process.dart';
-import 'package:flutter_base/src/presentation/ui/my_profile/profile_state.dart';
-import 'package:flutter_base/src/presentation/ui/my_profile/profile_view_model.dart';
+import 'package:flutter_base/src/presentation/screens/my_profile/profile_state.dart';
+import 'package:flutter_base/src/presentation/screens/my_profile/profile_view_model.dart';
 import 'package:flutter_base/src/shared/global_state/auth_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

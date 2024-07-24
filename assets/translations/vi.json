@@ -1,27 +1,16 @@
 {
-  "app_title": "Xin chào ae Mobile",
+  "app_title": "Flutter Base",
   "select_language": "Chọn ngôn ngữ",
-  "you_have_push_button_many_times": "Bạn đã ấn nút này nhiều lần: ",
-  "arbic": "Ả rập",
   "english": "Tiếng Anh",
-  "vietnamese":"Tiếng Việt",
-  "increase":"Tăng lên",
-  "clicked": {
-    "zero": "{} lần!",
-    "one": "{} lần!",
-    "two": "{} lần!",
-    "few": "{} lần!",
-    "many": "{} lần!",
-    "other": "{} lần!"
-  },
-  "someone_clicked": {
-    "zero": "{name} đã bấm {number} lần!",
-    "one": "{name} đã bấm {number} lần!",
-    "two": "{name} đã bấm {number} lần!",
-    "few": "{name} đã bấm {number} lần!",
-    "many": "{name} đã bấm {number} lần!",
-    "other": "{name} đã bấm {number} lần!"
-  },
-  "wife_children_floors_wheels": "{} vợ, {} con, {} lầu, {} bánh",
-  "wife_children_floors_wheels_keys": "{wife} vợ, {child} con, {floor} lầu, {wheel} bánh"
+  "settings": "Cài đặt",
+  "light": "Sáng",
+  "dark": "Tối",
+  "vietnamese": "Tiếng Việt",
+  "email": "Email",
+  "login": "Đăng nhập",
+  "password": "Mật khẩu",
+  "enter_your_email": "Nhập email của bạn",
+  "enter_your_password": "Nhập mật khẩu của bạn",
+  "password_at_least_six": "Mật khẩu phải trên 6 ký tự",
+  "enter_valid_email": "Hãy nhập đúng email"
 }

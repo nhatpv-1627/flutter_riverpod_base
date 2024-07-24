@@ -7,7 +7,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:flutter_base/src/domain/usecase/login_usecase.dart';
 import 'package:flutter_base/src/presentation/base/process.dart';
-import 'package:flutter_base/src/presentation/ui/login/login_state.dart';
+import 'package:flutter_base/src/presentation/screens/login/login_state.dart';
 
 part 'login_view_model.g.dart';
 

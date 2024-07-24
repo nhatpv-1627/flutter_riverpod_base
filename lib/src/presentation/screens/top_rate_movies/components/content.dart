@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base/src/domain/models/movie_model.dart';
 import 'package:flutter_base/src/presentation/base/process.dart';
 import 'package:flutter_base/src/presentation/navigation/screen_names.dart';
-import 'package:flutter_base/src/presentation/ui/top_rate_movies/top_rated_movies_view_model.dart';
+import 'package:flutter_base/src/presentation/screens/top_rate_movies/top_rated_movies_view_model.dart';
 import 'package:flutter_base/src/shared/extensions/list_exts.dart';
 import 'package:flutter_base/src/shared/widgets/loading.dart';
 import 'package:go_router/go_router.dart';

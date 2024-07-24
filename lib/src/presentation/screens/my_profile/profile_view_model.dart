@@ -2,7 +2,7 @@
 import 'package:flutter_base/src/di/usecase_provider.dart';
 import 'package:flutter_base/src/domain/usecase/base/base_input.dart';
 import 'package:flutter_base/src/presentation/base/process.dart';
-import 'package:flutter_base/src/presentation/ui/my_profile/profile_state.dart';
+import 'package:flutter_base/src/presentation/screens/my_profile/profile_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'profile_view_model.g.dart';

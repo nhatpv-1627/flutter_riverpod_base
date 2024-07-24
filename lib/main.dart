@@ -12,7 +12,7 @@ Future main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await EasyLocalization.ensureInitialized();
-  const supportedLocales = [Locale('en'), Locale('vi'), Locale('ar')];
+  const supportedLocales = [Locale('en'), Locale('vi')];
   await dotenv.load(fileName: Environment.environmentFileName);
 
   FlutterError.demangleStackTrace = (StackTrace stack) {

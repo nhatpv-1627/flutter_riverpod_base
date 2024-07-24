@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/generated/colors.gen.dart';
 import 'package:flutter_base/src/presentation/navigation/router.dart';
+import 'package:flutter_base/src/shared/global_state/theme_mode.dart';
 import 'package:flutter_base/theme/methods.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -24,6 +25,9 @@ class _State extends ConsumerState<FlutterBaseApp> {
 
   @override
   Widget build(BuildContext context) {
+    final router = ref.watch(routerProvider);
+    final themeMode = ref.watch(currentThemeModeProvider);
+
     final (lightTheme, darkTheme) = useMemoized(
       () => createDualThemeData(
         seedColor: ColorName.primaryColor,
@@ -42,7 +46,8 @@ class _State extends ConsumerState<FlutterBaseApp> {
       locale: context.locale,
       theme: lightTheme,
       darkTheme: darkTheme,
-      routerConfig: ref.watch(routerProvider),
+      themeMode: themeMode,
+      routerConfig: router,
       builder: (context, child) {
         return ResponsiveBreakpoints.builder(
           child: child!,

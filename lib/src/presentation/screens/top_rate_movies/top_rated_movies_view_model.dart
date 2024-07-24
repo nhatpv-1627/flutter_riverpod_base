@@ -1,7 +1,7 @@
 import 'package:flutter_base/src/di/usecase_provider.dart';
 import 'package:flutter_base/src/domain/usecase/get_top_rated_movies_usecase.dart';
 import 'package:flutter_base/src/presentation/base/process.dart';
-import 'package:flutter_base/src/presentation/ui/top_rate_movies/top_movies_state.dart';
+import 'package:flutter_base/src/presentation/screens/top_rate_movies/top_movies_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'top_rated_movies_view_model.g.dart';
