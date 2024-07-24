@@ -37,8 +37,17 @@ class $AssetsImagesGen {
   SvgGenImage get bookLover =>
       const SvgGenImage('assets/images/book_lover.svg');
 
+  /// File path: assets/images/ic_splash.png
+  AssetGenImage get icSplash =>
+      const AssetGenImage('assets/images/ic_splash.png');
+
+  /// File path: assets/images/ic_splash_android_12.png
+  AssetGenImage get icSplashAndroid12 =>
+      const AssetGenImage('assets/images/ic_splash_android_12.png');
+
   /// List of all assets
-  List<dynamic> get values => [addColor, bookLover];
+  List<dynamic> get values =>
+      [addColor, bookLover, icSplash, icSplashAndroid12];
 }
 
 class $AssetsJsonGen {

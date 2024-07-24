@@ -2,13 +2,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/config/environment.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:stack_trace/stack_trace.dart' as stack_trace;
 
 import 'src/presentation/flutter_base_app.dart';
 
 Future main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await EasyLocalization.ensureInitialized();
   const supportedLocales = [Locale('en'), Locale('vi'), Locale('ar')];
   await dotenv.load(fileName: Environment.environmentFileName);
