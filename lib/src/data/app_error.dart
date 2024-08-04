@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+
 import 'package:flutter_base/src/data/remote/response/error_response.dart';
 
 enum AppErrorType {
@@ -87,6 +88,10 @@ class AppError {
           }
           break;
       }
+    } else if (exception is AuthenticationException) {
+      type = AppErrorType.unauthorized;
+      code = HttpStatus.unauthorized;
+      message = exception.message;
     } else {
       code = -1;
       type = AppErrorType.unknown;
@@ -110,4 +115,11 @@ class AppError {
   String toString() {
     return 'AppError(message: $message, type: $type, errorCode: $errorCode, errors: $errors)';
   }
+}
+
+class AuthenticationException extends Object {
+  AuthenticationException({
+    required this.message,
+  });
+  final String message;
 }

@@ -1,5 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'list_response.g.dart';
 
@@ -22,7 +21,8 @@ class ListResponse<T> {
   Map<String, dynamic> toJson(Object Function(T value) toJsonT) =>
       _$ListResponseToJson(this, toJsonT);
 
-  factory ListResponse.fromJson(Map<String, dynamic> json, fromJsonT) =>
+  factory ListResponse.fromJson(
+          Map<String, dynamic> json, T Function(Object? json) fromJsonT) =>
       _$ListResponseFromJson(json, fromJsonT);
 
   @override

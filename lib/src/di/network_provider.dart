@@ -43,6 +43,7 @@ AuthInterceptor authInterceptor(AuthInterceptorRef ref) {
   return AuthInterceptor(
     currentDio: ref.watch(unAuthDioBuilderProvider),
     secureStorage: ref.watch(secureStorageProvider).requireValue,
+    unAuthApi: ref.watch(unAuthApiProvider),
   );
 }
 

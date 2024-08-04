@@ -1,4 +1,4 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 import 'data_model.dart';
 
@@ -7,13 +7,13 @@ part 'login_token.g.dart';
 @JsonSerializable()
 class Token with DataModel {
   @JsonKey(name: 'access_token')
-  final String? accessToken;
+  final String accessToken;
 
   @JsonKey(name: 'refresh_token')
   final String? refreshToken;
 
   Token({
-    this.accessToken,
+    required this.accessToken,
     this.refreshToken,
   });
 

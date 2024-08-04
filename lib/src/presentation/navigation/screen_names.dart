@@ -2,9 +2,8 @@ class ScreenNames {
   static const login = "login";
   static const home = "home";
   static const settings = "settings";
-  static const topRatedMovie = "topRatedMovie";
-  static const favoriteMovies = "favoriteMovies";
+  static const searchMovies = "searchMovies";
   static const myProfile = "myProfile";
-  static const topMovieDetail = "topMovieDetail";
-  static const favoriteMovieDetail = "favoriteMovieDetail";
+  static const homeMovieDetail = "homeMovieDetail";
+  static const searchMovieDetail = "searchMovieDetail";
 }

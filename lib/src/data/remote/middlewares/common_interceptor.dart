@@ -5,14 +5,17 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 class CommonInterceptor extends InterceptorsWrapper {
   final String userAgentKey = 'User-Agent';
+  final String contentType = 'contentType';
   final String accept = 'Accept';
   final String acceptValue = 'application/json';
 
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+  void onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
     // Add more header here
     options.headers[userAgentKey] = await userAgentClientHintsHeader();
     options.headers[accept] = acceptValue;
+    options.headers[contentType] = acceptValue;
     handler.next(options);
   }
 

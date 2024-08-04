@@ -1,4 +1,5 @@
 import 'package:flutter_base/src/data/local/local_data_source.dart';
+import 'package:flutter_base/src/data/local/prefs/prefs.dart';
 import 'package:flutter_base/src/data/local/storage/secure_storage.dart';
 import 'package:flutter_base/src/data/local/storage/storage_keys.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -15,5 +16,6 @@ Future<SecureStorage> secureStorage(SecureStorageRef ref) {
 LocalDataSource localDataSource(LocalDataSourceRef ref) {
   return LocalDataSource(
     secureStorage: ref.watch(secureStorageProvider).requireValue,
+    sharedPreferences: ref.watch(prefsProvider).requireValue,
   );
 }

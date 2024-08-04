@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/src/presentation/navigation/routes/global_routes.dart';
+import 'package:flutter_base/src/presentation/navigation/routes/profile_routes.dart';
+import 'package:flutter_base/src/presentation/navigation/routes/search_routes.dart';
 import 'package:flutter_base/src/presentation/navigation/screen_names.dart';
-import 'package:flutter_base/src/presentation/ui/favorite_movies/favorite_movie_page.dart';
-import 'package:flutter_base/src/presentation/ui/my_profile/my_profile_page.dart';
-import 'package:flutter_base/src/presentation/ui/settings/settings.dart';
+import 'package:flutter_base/src/presentation/screens/home/home_page.dart';
+import 'package:flutter_base/src/presentation/screens/my_profile/my_profile_page.dart';
+import 'package:flutter_base/src/presentation/screens/search/search_movies_page.dart';
+import 'package:flutter_base/src/presentation/widgets/bottom_navigation.dart';
 import 'package:flutter_base/src/shared/global_state/auth_state.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '/src/presentation/ui/home/home_page.dart';
-import '/src/presentation/ui/login/login_page.dart';
-import '/src/presentation/ui/movie_detail/movie_detail_page.dart';
-import '/src/presentation/ui/top_rate_movies/top_rated_movies_page.dart';
+import 'routes/home_routes.dart';
 import 'screen_paths.dart';
 
 part 'router.g.dart';
@@ -30,44 +31,28 @@ GoRouter router(RouterRef ref) {
       },
     );
 
-  final topRatedMoviesStack = StatefulShellBranch(
+  final homeStack = StatefulShellBranch(
     routes: <RouteBase>[
       GoRoute(
-        name: ScreenNames.topRatedMovie,
-        path: ScreenPaths.topRatedMovie,
+        name: ScreenNames.home,
+        path: ScreenPaths.home,
         builder: (BuildContext context, GoRouterState state) {
-          return const TopRatedMoviePage();
+          return const HomePage();
         },
-        routes: <RouteBase>[
-          GoRoute(
-            name: ScreenNames.topMovieDetail,
-            path: ScreenPaths.movieDetail,
-            builder: (BuildContext context, GoRouterState state) {
-              return const MovieDetailPage();
-            },
-          ),
-        ],
+        routes: homeRoutes,
       ),
     ],
   );
 
-  final favoriteMoviesStack = StatefulShellBranch(
+  final searchMoviesStack = StatefulShellBranch(
     routes: <RouteBase>[
       GoRoute(
-        name: ScreenNames.favoriteMovies,
-        path: ScreenPaths.favoriteMovies,
+        name: ScreenNames.searchMovies,
+        path: ScreenPaths.searchMovies,
         builder: (BuildContext context, GoRouterState state) {
-          return const FavoriteMoviesPage();
+          return const SearchMoviePage();
         },
-        routes: <RouteBase>[
-          GoRoute(
-            name: ScreenNames.favoriteMovieDetail,
-            path: ScreenPaths.movieDetail,
-            builder: (BuildContext context, GoRouterState state) {
-              return const MovieDetailPage();
-            },
-          ),
-        ],
+        routes: searchRoutes,
       ),
     ],
   );
@@ -80,6 +65,7 @@ GoRouter router(RouterRef ref) {
         builder: (BuildContext context, GoRouterState state) {
           return const MyProfilePage();
         },
+        routes: profileRoutes,
       ),
     ],
   );
@@ -87,28 +73,19 @@ GoRouter router(RouterRef ref) {
   final router = GoRouter(
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
-    initialLocation: ScreenPaths.topRatedMovie,
+    initialLocation: ScreenPaths.home,
     routes: [
-      GoRoute(
-        name: ScreenNames.login,
-        path: ScreenPaths.login,
-        builder: (context, state) => LoginPage(),
-      ),
-      GoRoute(
-        name: ScreenNames.settings,
-        path: ScreenPaths.settings,
-        builder: (context, state) => const SettingsScreen(),
-      ),
       StatefulShellRoute.indexedStack(
         builder: (BuildContext context, GoRouterState state, Widget child) {
-          return HomePage(child: child);
+          return BottomNavigation(child: child);
         },
         branches: <StatefulShellBranch>[
-          topRatedMoviesStack,
-          favoriteMoviesStack,
+          homeStack,
+          searchMoviesStack,
           myProfileStack,
         ],
       ),
+      ...globalRoutes,
     ],
     refreshListenable: authStateNotifier,
     redirect: (_, state) {
