@@ -2,6 +2,37 @@
 
 A Flutter project base using Riverpod and apply Clean Architecture pattern
 
+## Some screen shots
+
+<p align="center">
+ <img src="screenshots/screenshot1.png" width="22%"/>
+  <img src="screenshots/screenshot2.png" width="22%"/>
+  <img src="screenshots/screenshot3.png" width="22%"/>
+  <img src="screenshots/screenshot4.png" width="22%"/>
+</p>
+
+## Tech Stack
+
+- State Management: [Riverpod-hooks](https://riverpod.dev/)
+- Navigation: [GoRoute](https://pub.dev/documentation/go_router/latest/)
+- Screen responsive: [ResponsiveFramework](https://pub.dev/packages/responsive_framework)
+- Localization: [EasyLocalization](https://pub.dev/packages/easy_localization)
+- Network:
+  - [Dio](https://pub.dev/packages/dio)
+  - [Retrofit](https://pub.dev/packages/retrofit)
+- Lightweight local storages:
+  - [SharedPreferences](https://pub.dev/packages/shared_preferences)
+  - [SecureStorage](https://pub.dev/packages/flutter_secure_storage)
+
+## Features:
+
+- Login
+- View Home(now playing carousel, popular list, up coming movies)
+- Search Movies
+- View Movie Detail
+- Profile
+- Setting(theme, language)
+
 ## Installation
 
 Clone this repository
@@ -68,4 +99,8 @@ flutter run --flavor develop --dart-define=environmentName=develop
 ![2](https://user-images.githubusercontent.com/60587905/220845347-b04f0b5e-7386-4d19-aac4-5d9c0b084406.png)
 ![3](https://user-images.githubusercontent.com/60587905/220845368-1383cc44-8469-48a8-bce2-f4ab7844ba13.png)
 
-- Run and try. Happy coding <3
+## Credits
+
+- [TheMovieDB](https://developer.themoviedb.org/v4/reference)
+
+### Run and try. Happy coding <3

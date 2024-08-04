@@ -13,6 +13,8 @@
   "logout": "Logout",
   "confirm_logout": "Are you sure you want to logout?",
   "cancel": "Cancel",
+  "top_rating_movies": "Top Rating Movies",
+  "new_movies": "New Movies",
   "enter_your_email": "Please enter your email",
   "release_date": "Release Date: {}",
   "enter_your_password": "Please enter your password",
