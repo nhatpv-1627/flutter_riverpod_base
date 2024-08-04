@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_base/src/data/model/movie.dart';
-import 'package:flutter_base/src/data/remote/response/list_response.dart';
+import 'package:flutter_base/src/data/model/movie_detail.dart';
 import 'package:retrofit/http.dart';
 
 part 'auth_api.g.dart';
@@ -9,9 +8,9 @@ part 'auth_api.g.dart';
 abstract class AuthApi {
   factory AuthApi(Dio dio) = _AuthApi;
 
-  @GET('/movie/top_rated')
-  Future<ListResponse<Movie>> getTopRatedMovies(
+  @GET('/movie/{movieId}')
+  Future<MovieDetail> getMovieDetail(
+    @Path('movieId') int movieId,
     @Query('api_key') String apiKey,
-    @Query('page') int page,
   );
 }

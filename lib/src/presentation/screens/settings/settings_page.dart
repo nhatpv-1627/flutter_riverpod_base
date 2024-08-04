@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/generated/locale_keys.g.dart';
 import 'package:flutter_base/src/presentation/screens/settings/components/select_language_dialog.dart';
@@ -25,20 +26,20 @@ class SettingsPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(LocaleKeys.settings),
+        title: const Text(LocaleKeys.settings).tr(),
       ),
       body: ListView(
         children: [
           ListTile(
             leading: const Icon(Icons.brightness_6),
-            title: const Text('Theme mode'),
+            title: const Text(LocaleKeys.themeMode).tr(),
             trailing: Text(themeMode.label),
             onTap: onTapThemeMode,
           ),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.language),
-            title: const Text(LocaleKeys.select_language),
+            title: const Text(LocaleKeys.select_language).tr(),
             onTap: onTapSelectLanguage,
           ),
         ],

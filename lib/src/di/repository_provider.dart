@@ -31,6 +31,7 @@ MovieRepository movieRepository(MovieRepositoryRef ref) {
   return MovieRepositoryImpl(
     ref.watch(movieRemoteDataSourceProvider),
     ref.watch(movieMapperProvider),
+    ref.watch(movieDetailMapperProvider),
   );
 }
 

@@ -38,12 +38,15 @@ enum AuthState {
     ],
   ),
   authenticated(
-    redirectPath: ScreenPaths.topRatedMovie,
+    redirectPath: ScreenPaths.home,
     allowedPaths: [
-      ScreenPaths.topRatedMovie,
-      ScreenPaths.favoriteMovies,
-      ScreenPaths.movieDetail,
+      ScreenPaths.home,
+      '${ScreenPaths.home}/${ScreenPaths.movieDetail}',
+      ScreenPaths.searchMovies,
+      '${ScreenPaths.searchMovies}/${ScreenPaths.movieDetail}',
       ScreenPaths.myProfile,
+      ScreenPaths.movieDetail,
+      ScreenPaths.settings,
     ],
   ),
   ;

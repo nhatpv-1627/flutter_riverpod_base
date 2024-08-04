@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/shared/extensions/common_exts.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SelectLanguageDialog extends ConsumerWidget {
@@ -16,6 +17,7 @@ class SelectLanguageDialog extends ConsumerWidget {
             locale: locale,
             onTap: () {
               context.setLocale(locale);
+              context.pop();
             },
           )
       ],

@@ -1,75 +1,94 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
+import 'package:flutter_base/src/data/app_error.dart';
 import 'package:flutter_base/src/data/local/storage/secure_storage.dart';
+import 'package:flutter_base/src/data/local/storage/storage_keys.dart';
+import 'package:flutter_base/src/data/model/login_token.dart';
+import 'package:flutter_base/src/data/remote/api/unauth_api.dart';
+import 'package:flutter_base/src/data/remote/requests/refresh_token_request.dart';
 
 class AuthInterceptor extends QueuedInterceptor {
-  final Dio currentDio;
+  AuthInterceptor(
+      {required this.currentDio,
+      required this.secureStorage,
+      required this.unAuthApi});
+  static const int maxRetryAttempts = 3;
   final SecureStorage secureStorage;
-  final String auth = 'Authorization';
-  final String bearer = 'Bearer';
+  final Dio currentDio;
+  final UnAuthApi unAuthApi;
 
-  AuthInterceptor({required this.currentDio, required this.secureStorage});
+  @override
+  void onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
+    final accessToken = secureStorage.get(StorageKeys.accessToken.name);
+    if (accessToken != null) {
+      options.headers["Authorization"] = "Bearer $accessToken";
+    }
+    return handler.next(options);
+  }
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
-    if (err.response != null &&
-        err.response?.statusCode == HttpStatus.unauthorized) {
-      // TODO Please refactor when token api ready
-
-      /// Step 1: Get current token from request
-      /// Step 2: Compare with token from storage
-      /// Step 3.1: If different, recall request with token from storage
-      /// Step 3.2: If same, refresh token
-
-      const tokenFromRequest = '';
-      const tokenFromStorage = '';
-      String token = tokenFromStorage;
-
-      if (tokenFromRequest != tokenFromStorage) {
-        // token = await requestToken();
-      }
-
-      // Re-call request
-      final request = err.requestOptions;
+    if (err.response?.statusCode == 401) {
       try {
-        // Check header has Authentication
-        if (request.headers.containsKey(auth)) {
-          // Update the last value
-          request.headers.update(
-              auth,
-              (value) => (value.toString().contains(bearer) == true)
-                  ? '$bearer $token'
-                  : token);
-        }
-
-        final response = await currentDio.request(
-          request.path,
-          data: request.data,
-          queryParameters: request.queryParameters,
-          cancelToken: request.cancelToken,
-          options: Options(
-              method: request.method,
-              sendTimeout: request.sendTimeout,
-              extra: request.extra,
-              headers: request.headers,
-              responseType: request.responseType,
-              contentType: request.contentType,
-              receiveDataWhenStatusError: request.receiveDataWhenStatusError,
-              followRedirects: request.followRedirects,
-              maxRedirects: request.maxRedirects,
-              requestEncoder: request.requestEncoder,
-              responseDecoder: request.responseDecoder,
-              listFormat: request.listFormat),
-          onReceiveProgress: request.onReceiveProgress,
+        await _attemptTokenRefresh();
+        final newAccessToken = secureStorage.get(StorageKeys.accessToken.name);
+        final RequestOptions requestOptions = err.requestOptions;
+        final opts = Options(
+          method: requestOptions.method,
+          headers: {
+            ...requestOptions.headers,
+            "Authorization": "Bearer $newAccessToken",
+          },
+        );
+        final Response response = await currentDio.request(
+          requestOptions.path,
+          options: opts,
+          data: requestOptions.data,
+          queryParameters: requestOptions.queryParameters,
         );
 
-        handler.resolve(response);
-      } on DioException catch (e) {
-        handler.next(e);
+        return handler.resolve(response);
+      } catch (e) {
+        if (e is AuthenticationException) {
+          secureStorage.removeAll();
+        }
+
+        return handler.next(err);
       }
+    } else {
+      return handler.next(err);
+    }
+  }
+
+  Future<void> _attemptTokenRefresh() async {
+    final refreshToken = secureStorage.get(StorageKeys.refreshToken.name);
+    if (refreshToken == null) {
+      throw AuthenticationException(
+        message: "No refresh token available",
+      );
     }
 
-    super.onError(err, handler);
+    int retryCount = 0;
+    while (retryCount < maxRetryAttempts) {
+      try {
+        final Token token = await unAuthApi.refreshToken(
+          RefreshTokenRequest(refreshToken: refreshToken),
+        );
+
+        await secureStorage.set(
+            StorageKeys.accessToken.name, token.accessToken);
+        await secureStorage.set(
+            StorageKeys.refreshToken.name, token.refreshToken ?? '');
+
+        return;
+      } catch (e) {
+        retryCount++;
+        if (retryCount >= maxRetryAttempts) {
+          throw AuthenticationException(
+            message: "Failed to refresh token after $maxRetryAttempts attempts",
+          );
+        }
+      }
+    }
   }
 }

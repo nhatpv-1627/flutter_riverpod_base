@@ -8,9 +8,20 @@
   "vietnamese": "Tiếng Việt",
   "email": "Email",
   "login": "Đăng nhập",
+  "logout": "Đăng xuất",
+  "confirm_logout": "Đăng xuất khỏi ứng dụng?",
   "password": "Mật khẩu",
+  "cancel": "Huỷ",
+  "themeMode": "Chế độ màu",
   "enter_your_email": "Nhập email của bạn",
   "enter_your_password": "Nhập mật khẩu của bạn",
   "password_at_least_six": "Mật khẩu phải trên 6 ký tự",
-  "enter_valid_email": "Hãy nhập đúng email"
+  "release_date": "Ngày phát hành: {}",
+  "search_dot": "Tìm kiếm...",
+  "empty": "Không có dữ liệu!",
+  "home": "Trang Chủ",
+  "search": "Tìm Kiếm",
+  "profile": "Hồ Sơ",
+  "enter_valid_email": "Hãy nhập đúng email",
+  "no_internet": "Không có kết nối mạng"
 }

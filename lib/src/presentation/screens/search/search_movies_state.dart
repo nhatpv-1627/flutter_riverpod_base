@@ -1,30 +1,34 @@
 import 'package:flutter_base/src/domain/models/movie_model.dart';
 import 'package:flutter_base/src/presentation/base/process.dart';
 
-class TopMoviesState {
+class SearchMoviesState {
   ProcessStatus status = ProcessStatus.loading;
   List<MovieModel>? movies;
-  int? currentPage = 1;
+  String? query;
+  int? nextPage = 1;
   Object? error;
 
-  TopMoviesState({
-    this.status = ProcessStatus.loading,
-    this.movies,
-    this.currentPage,
-    this.error,
-  });
+  SearchMoviesState(
+      {this.status = ProcessStatus.loading,
+      this.movies,
+      this.nextPage,
+      this.error,
+      this.query,
+      top});
 
-  TopMoviesState copyWith({
+  SearchMoviesState copyWith({
     ProcessStatus? status,
     List<MovieModel>? movies,
-    int? currentPage,
+    int? nextPage,
+    String? query,
     Object? error,
   }) {
-    return TopMoviesState(
+    return SearchMoviesState(
       status: status ?? this.status,
       movies: movies ?? this.movies,
-      currentPage: currentPage ?? this.currentPage,
+      nextPage: nextPage ?? this.nextPage,
       error: error ?? this.error,
+      query: query ?? this.query,
     );
   }
 }

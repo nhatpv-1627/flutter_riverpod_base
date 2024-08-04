@@ -1,11 +1,15 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/generated/locale_keys.g.dart';
+import 'package:flutter_base/src/data/model/user_data.dart';
 import 'package:flutter_base/src/presentation/base/process.dart';
 import 'package:flutter_base/src/presentation/navigation/screen_names.dart';
 import 'package:flutter_base/src/presentation/screens/login/login_state.dart';
 import 'package:flutter_base/src/presentation/screens/login/login_view_model.dart';
+import 'package:flutter_base/src/presentation/widgets/loading.dart';
+import 'package:flutter_base/src/shared/extensions/context_exts.dart';
 import 'package:flutter_base/src/shared/global_state/auth_state.dart';
-import 'package:flutter_base/src/shared/widgets/loading.dart';
+import 'package:flutter_base/src/shared/global_state/user_state.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -17,20 +21,20 @@ class LoginPage extends ConsumerWidget {
 
   String? validateEmail(value) {
     if (value == null || value.isEmpty) {
-      return LocaleKeys.enter_your_email;
+      return LocaleKeys.enter_your_email.tr();
     }
     if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-      return LocaleKeys.enter_valid_email;
+      return LocaleKeys.enter_valid_email.tr();
     }
     return null;
   }
 
   String? validatePassword(value) {
     if (value == null || value.isEmpty) {
-      return LocaleKeys.enter_your_password;
+      return LocaleKeys.enter_your_password.tr();
     }
     if (value.length < 6) {
-      return LocaleKeys.password_at_least_six;
+      return LocaleKeys.password_at_least_six.tr();
     }
     return null;
   }
@@ -56,7 +60,7 @@ class LoginPage extends ConsumerWidget {
                 icon: const Icon(Icons.settings),
                 label: const Text(
                   LocaleKeys.settings,
-                ),
+                ).tr(),
               ),
             ),
           ),
@@ -81,12 +85,12 @@ class LoginPage extends ConsumerWidget {
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
-                        ),
+                        ).tr(),
                         const SizedBox(height: 20.0),
                         TextFormField(
                           controller: _emailController,
                           decoration: InputDecoration(
-                            labelText: LocaleKeys.email,
+                            labelText: LocaleKeys.email.tr(),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
@@ -97,7 +101,7 @@ class LoginPage extends ConsumerWidget {
                         TextFormField(
                           controller: _passwordController,
                           decoration: InputDecoration(
-                            labelText: LocaleKeys.password,
+                            labelText: LocaleKeys.password.tr(),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
@@ -110,6 +114,8 @@ class LoginPage extends ConsumerWidget {
                           width: double.infinity,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  context.colorScheme.primaryContainer,
                               padding:
                                   const EdgeInsets.symmetric(vertical: 15.0),
                               shape: RoundedRectangleBorder(
@@ -126,7 +132,7 @@ class LoginPage extends ConsumerWidget {
                             child: const Text(
                               LocaleKeys.login,
                               style: TextStyle(fontSize: 18),
-                            ),
+                            ).tr(),
                           ),
                         ),
                       ],

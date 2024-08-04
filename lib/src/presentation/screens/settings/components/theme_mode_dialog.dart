@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/shared/extensions/common_exts.dart';
 import 'package:flutter_base/src/shared/global_state/theme_mode.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ThemeModeDialog extends ConsumerWidget {
@@ -10,7 +11,7 @@ class ThemeModeDialog extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     void onTapOption(ThemeMode themeMode) {
       ref.read(currentThemeModeProvider.notifier).set(themeMode);
-      Navigator.of(context).pop();
+      context.pop();
     }
 
     return SimpleDialog(

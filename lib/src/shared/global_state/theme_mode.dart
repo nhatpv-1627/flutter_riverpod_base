@@ -9,9 +9,9 @@ part 'theme_mode.g.dart';
 class CurrentThemeMode extends _$CurrentThemeMode {
   @override
   ThemeMode build() {
-    final prefs = ref.watch(prefsProvider).requireValue;
+    final prefs = ref.watch(prefsProvider).valueOrNull;
 
-    final themeModeName = prefs.getString(SharedKeys.themeMode.name);
+    final themeModeName = prefs?.getString(SharedKeys.themeMode.name);
 
     return ThemeMode.values.singleWhere(
       (themeMode) => themeMode.name == themeModeName,

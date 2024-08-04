@@ -8,10 +8,21 @@
   "dark": "Dark",
   "login": "Login",
   "email": "Email",
+  "themeMode": "Theme mode",
   "password": "Password",
+  "logout": "Logout",
+  "confirm_logout": "Are you sure you want to logout?",
+  "cancel": "Cancel",
   "enter_your_email": "Please enter your email",
+  "release_date": "Release Date: {}",
   "enter_your_password": "Please enter your password",
   "password_at_least_six": "Password must be at least 6 characters",
+  "empty": "Empty data!",
+  "home": "Home",
+  "search_dot": "Search...",
+  "search": "Search",
+  "profile": "Profile",
   "enter_valid_email": "Please enter a valid email",
-  "vietnamese": "Vietnamese"
+  "vietnamese": "Vietnamese",
+  "no_internet": "No internet!"
 }
