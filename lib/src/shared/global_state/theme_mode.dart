@@ -20,8 +20,8 @@ class CurrentThemeMode extends _$CurrentThemeMode {
   }
 
   void set(ThemeMode themeMode) {
-    final prefs = ref.read(prefsProvider).requireValue;
-    prefs.setString(SharedKeys.themeMode.name, themeMode.name);
+    final prefs = ref.read(prefsProvider).valueOrNull;
+    prefs?.setString(SharedKeys.themeMode.name, themeMode.name);
     ref.invalidateSelf();
   }
 }

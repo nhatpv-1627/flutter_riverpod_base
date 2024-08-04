@@ -28,6 +28,14 @@
       ]
     },
 
+    {
+      "name": "develop-profile",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "args": ["--flavor", "develop", "--dart-define=environmentName=develop"]
+    },
+
     // release mode
     {
       "name": "develop-release",

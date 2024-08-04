@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/generated/locale_keys.g.dart';
-import 'package:flutter_base/src/data/model/user_data.dart';
 import 'package:flutter_base/src/presentation/base/process.dart';
 import 'package:flutter_base/src/presentation/navigation/screen_names.dart';
 import 'package:flutter_base/src/presentation/screens/login/login_state.dart';
@@ -9,7 +8,6 @@ import 'package:flutter_base/src/presentation/screens/login/login_view_model.dar
 import 'package:flutter_base/src/presentation/widgets/loading.dart';
 import 'package:flutter_base/src/shared/extensions/context_exts.dart';
 import 'package:flutter_base/src/shared/global_state/auth_state.dart';
-import 'package:flutter_base/src/shared/global_state/user_state.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

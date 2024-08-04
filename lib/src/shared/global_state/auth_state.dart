@@ -10,8 +10,8 @@ part 'auth_state.g.dart';
 class CurrentAuthState extends _$CurrentAuthState {
   @override
   AuthState build() {
-    final secureStorage = ref.watch(secureStorageProvider).requireValue;
-    final token = secureStorage.get(StorageKeys.accessToken.name);
+    final secureStorage = ref.watch(secureStorageProvider).valueOrNull;
+    final token = secureStorage?.get(StorageKeys.accessToken.name);
     return token.isNullOrEmpty
         ? AuthState.unauthenticated
         : AuthState.authenticated;
