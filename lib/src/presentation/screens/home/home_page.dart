@@ -37,11 +37,11 @@ class HomePage extends HookConsumerWidget {
                   children: [
                     _buildCarousel(),
                     const SizedBox(height: 20),
-                    _buildTitle(LocaleKeys.english.tr()),
+                    _buildTitle(LocaleKeys.top_rating_movies.tr()),
                     const SizedBox(height: 10),
                     _buildTopRatedList(),
                     const SizedBox(height: 20),
-                    _buildTitle(LocaleKeys.english.tr()),
+                    _buildTitle(LocaleKeys.new_movies.tr()),
                     const SizedBox(height: 10),
                     _buildPopularList(),
                   ],
